@@ -8,10 +8,12 @@ import CreateModalUser from '../actions/create.user';
 function Table2() {
     const [data, setData] = useState([]);
      
-
+    const handleFormData = (data) => {
+        console.log(data);
+    }
     return (
         <>
-           <CreateModalUser />
+           <CreateModalUser handleFormData={handleFormData} />
             <Table striped bordered hover>
                 <thead>
                     <tr>

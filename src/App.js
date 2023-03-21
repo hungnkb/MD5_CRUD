@@ -14,7 +14,7 @@ function App() {
       <NavbarHeader />
       <Routes>
         <Route path='/table2' element={<Table2 />} />
-        <Route path='/' element={<Table/>}/>
+        <Route path='/' element={<Table />}/>
       </Routes>
     </>
   );
