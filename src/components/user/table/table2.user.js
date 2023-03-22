@@ -7,13 +7,25 @@ import CreateModalUser from '../actions/create.user';
 
 function Table2() {
     const [data, setData] = useState([]);
-     
-    const handleFormData = (data) => {
-        console.log(data);
+
+    const handleFormData = (newUser) => {
+        setData([...data, newUser])
+    } 
+
+    const handleEditUser = (editUser) => {
+        console.log(editUser);
     }
+
+    const handleDeleteUser = (e) => {
+        let newData = data.filter(user => {
+           return user.username != e.target.value;
+        })
+        setData(newData);
+    }
+
     return (
         <>
-           <CreateModalUser handleFormData={handleFormData} />
+            <CreateModalUser handleFormData={handleFormData} />
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -25,10 +37,13 @@ function Table2() {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map(user => {
+                    {data.map((user, index) => {
                         return (
-                            <>
-                                <tr>
+                            
+                                <tr key={index - 1}>
+                                    <td>
+                                        {index + 1}
+                                    </td>
                                     <td>
                                         {user.username}
                                     </td>
@@ -39,15 +54,23 @@ function Table2() {
                                         {user.role}
                                     </td>
                                     <td>
-
+                                        <Button
+                                            style={{ color: 'white', marginRight: '5px' }}
+                                            variant="info"
+                                        >Edit</Button>
+                                        <Button
+                                            value={user.username}
+                                            variant="danger"
+                                            onClick={(e) => { handleDeleteUser(e) }}
+                                        >Delete</Button>
                                     </td>
                                 </tr>
-                            </>
+                            
                         )
                     })}
                 </tbody>
             </Table>
-            
+
         </>
 
     );

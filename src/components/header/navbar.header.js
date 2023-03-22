@@ -19,6 +19,8 @@ function NavbarHeader() {
           <Nav.Link onClick={() => navigate('/table2')}>
             Features</Nav.Link>
           <Nav.Link onClick={() => navigate('/table2')}>Product</Nav.Link>
+          <Nav.Link onClick={() => navigate('/register')}>Register</Nav.Link>
+          <Nav.Link onClick={() => navigate('/login')}>Login</Nav.Link>
         </Nav>
         {/* </Container> */}
       </Navbar>
